@@ -5,8 +5,9 @@ import axios from "axios"
 
 function App() {
 
-  const [url, setUrl]  = useState("")
-  const [details, setDetails] = useState(null)
+  const [url, setUrl]  = useState("");
+  const [details, setDetails] = useState(null);
+  const [message, setMessage] = useState('Insert the link and download the video with your desired resolution')
 
   //console.log(url)
 
@@ -16,14 +17,20 @@ function App() {
       const res = await axios.post('http://localhost:8800/preview', {
         url : url,  
       })
-      console.log(res.data)
+      //console.log(res.data)
       setDetails(res.data)
 
     }
     catch(e) {
-      console.log(e)
-    }  
-    
+      if (e.response) {
+        //console.log(e.response.message)
+        setMessage(e.response.data)
+      }
+      else{
+        //console.log("from frontend", e)
+        setMessage('Enexpected error occurs')
+      } 
+    }   
   }
 
   function clearContent() {
@@ -57,20 +64,28 @@ function App() {
       window.URL.revokeObjectURL(videoUrl); // Free memory
     }
     catch(e) {
-      console.log("from frontend", e)
+      if (e.response) {
+        //console.log(e.response.message)
+        setMessage(e.response.data)
+      }
+      else{
+        //console.log("from frontend", e)
+        setMessage('Enexpected error occurs')
+      } 
     }
   }
   
   return (
     <div className='app'>
+      <div className='message'>{message}</div>
       <input 
         placeholder='Insert link here' 
         value={url} 
         onChange={(e) => setUrl(e.target.value) }>
       </input>
       <div className='controls'>
-        <button  onClick={getDetails}>Get details</button>
-        <button onClick={clearContent}>Clear</button>
+        <button className='getDetails'  onClick={getDetails}>Get details</button>
+        <button className='clear' onClick={clearContent}>Clear</button>
       </div>
       
       {

@@ -1,26 +1,35 @@
 .app{
-   display: flex;
-   height: 100vh;
-   align-items: center;
-   justify-content: center; 
-   flex-direction: column;
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    padding-top: 30vh;
+    flex-direction: column;
+    background-color: black;
+    color: #eee;
 
+    
+    
    button{
         display: flex;
         align-items: center;
         justify-content: center;
         border: 1px solid ;
         border-radius: 2px;
-        height: 25px;
-        ;
+        height: 30px;
         font-weight: 600;
         letter-spacing: 0.5px;
         text-transform: uppercase;
+        background-color: rgb(202, 234, 231);
         cursor: pointer;
 
         &:hover {
             background-color: #dadada; 
         }
+   }
+
+   .message{
+       margin-bottom: 30px;
+       font-size: 23px;
    }
 
    input{
@@ -29,6 +38,7 @@
         font-size: 16px;
         cursor: pointer;
         margin-bottom: 10px;
+        background-color: rgb(202, 234, 231);
    }
 
    .controls{
@@ -37,6 +47,12 @@
         align-items: center;
         justify-content: center;
         gap: 4px;
+
+        
+
+        .clear{
+            background-color: #ce2828;
+        }
    }
 
 
@@ -65,7 +81,7 @@
 
             .filesize{
                 width: 80px;
-                background-color: aliceblue;
+                
             }
         }
    }
