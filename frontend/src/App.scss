@@ -1,0 +1,92 @@
+.app{
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    padding-top: 30vh;
+    flex-direction: column;
+    background-color: black;
+    color: #eee;
+
+    
+    
+   button{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid ;
+        border-radius: 2px;
+        height: 30px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        background-color: rgb(202, 234, 231);
+        cursor: pointer;
+
+        &:hover {
+            background-color: #dadada; 
+        }
+   }
+
+   .message{
+       margin-bottom: 30px;
+       font-size: 23px;
+   }
+
+   input{
+        width: 800px;
+        height: 30px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-bottom: 10px;
+        background-color: rgb(202, 234, 231);
+   }
+
+   .controls{
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+
+        
+
+        .clear{
+            background-color: #ce2828;
+        }
+   }
+
+
+
+   .videoInfo{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+
+        .title{
+            font-size: 20px;
+        }
+
+        .details{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+
+
+            button{
+                width: 70px;
+            }
+
+            .filesize{
+                width: 80px;
+                
+            }
+        }
+
+        .mp3-download{
+            width: 170px;
+        }
+   }
+}
