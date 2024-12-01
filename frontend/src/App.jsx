@@ -40,7 +40,7 @@ function App() {
     setMessage('Insert the link and download the video with your desired resolution')
   }
 
-  async function downloadMp4(itag) {
+  async function downloadMp4(videoItag, audioItag) {
 
     let userInput = null
 
@@ -57,15 +57,17 @@ function App() {
 
     //console.log(userInput)
 
-    const sanitizedFilename = (fileName) => fileName.replace(/[<>:"/.\\|?*]/g, '');
+   const sanitizedFilename = (fileName) => fileName.replace(/[<>:"/.\\|?*]/g, '');
 
     let fileName = sanitizedFilename(userInput)
+
 
     try{
       setMessage('Downloading')
       const res = await axios.post('http://localhost:8800/download/video', {
         url : url, 
-        itag : itag,
+        videoItag : videoItag,
+        audioItag : audioItag,
         fileName : fileName
       }, {
         responseType : 'blob',
@@ -112,7 +114,7 @@ function App() {
     let fileName = sanitizedFilename(userInput)
 
     try {
-      setMessage('Downloading as mp3 could takes a while. Pls wait...')
+      setMessage('Downloading as mp3 could take a while. Pls wait...')
       const res = await axios.post('http://localhost:8800/download/audio', {
         url,
         fileName
@@ -161,7 +163,7 @@ function App() {
             {
               details.resolutions.map((eachReso, i) => (
                 <div className='details' key={i}>
-                  <button  onClick={() => downloadMp4(eachReso.itag)}>{eachReso.quality}</button>
+                  <button  onClick={() => downloadMp4(eachReso.videoItag, eachReso.audioItag)}>{eachReso.quality}</button>
                   <div className='filesize'>{eachReso.fileSize}</div>
                 </div>   
               )) 
